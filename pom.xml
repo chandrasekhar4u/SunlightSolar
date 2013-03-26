@@ -48,6 +48,20 @@
 			<version>4.2.0.Final</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		
+		<!-- 	distribution of Apache MyFaces Orchestra   -->
+		<dependency>
+			<groupId>org.apache.myfaces.orchestra</groupId>
+			<artifactId>myfaces-orchestra-core</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.myfaces.orchestra</groupId>
+			<artifactId>myfaces-orchestra-core20</artifactId>
+			<version>1.5</version>
+		</dependency>
 
 
 
