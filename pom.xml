@@ -7,6 +7,11 @@
 	<packaging>war</packaging>
 	<name>Sunlight Solar</name>
 	<description>Solar Business Maintanence Project</description>
+	<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	
 	<dependencies>
 
 		<dependency>
@@ -235,5 +240,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+		
 
 </project>
