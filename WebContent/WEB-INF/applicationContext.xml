@@ -9,6 +9,15 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
     http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+
+
+<bean name="baseController" class="main.java.controller.BaseController" abstract="true">
+</bean>
+
+<bean name="loginBean" class="main.java.controller.LoginBean" parent="baseController">
+</bean>
+
 <!-- <context:component-scan base-package="PUT_YOUR_BASE_PACKAGE_NAME_HERE" />
 
 sets up transaction management for service beans

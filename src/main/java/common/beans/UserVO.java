@@ -4,21 +4,27 @@
 package main.java.common.beans;
 
 /**
- * @author CHANDRA
+ * The Class UserVO.
  * 
+ * @author CHANDRA
  */
 public class UserVO extends BaseVO {
 
-    /**
-     * 
-     */
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -2736180064980360718L;
 
+    /** The id. */
     private Long id;
+
+    /** The name. */
     private String name;
+
+    /** The address. */
     private String address;
 
     /**
+     * Gets the id.
+     * 
      * @return the id
      */
     public Long getId() {
@@ -26,6 +32,8 @@ public class UserVO extends BaseVO {
     }
 
     /**
+     * Sets the id.
+     * 
      * @param id
      *            the id to set
      */
@@ -34,6 +42,8 @@ public class UserVO extends BaseVO {
     }
 
     /**
+     * Gets the name.
+     * 
      * @return the name
      */
     public String getName() {
@@ -41,6 +51,8 @@ public class UserVO extends BaseVO {
     }
 
     /**
+     * Sets the name.
+     * 
      * @param name
      *            the name to set
      */
@@ -49,6 +61,8 @@ public class UserVO extends BaseVO {
     }
 
     /**
+     * Gets the address.
+     * 
      * @return the address
      */
     public String getAddress() {
@@ -56,6 +70,8 @@ public class UserVO extends BaseVO {
     }
 
     /**
+     * Sets the address.
+     * 
      * @param address
      *            the address to set
      */

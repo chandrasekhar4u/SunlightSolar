@@ -1,18 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head></h:head> 
-<body>
-    <rich:panel>
-        <f:facet name="header">
+<h:head></h:head>
+<h:form id="loginform">
+	<body>
+
+
+		<rich:panel>
+			<f:facet name="header">
         *Sunlight Solar Business Application*
         </f:facet>
-		<h:outputText value="Welcome to Sunlight Solar."  style="color:blue;font-size:14px;"/> 
-	</rich:panel>
-</body> 
+			<h:outputText value="Welcome to Sunlight Solar."
+				style="color:blue;font-size:14px;" />
+		</rich:panel>
+		<rich:panel>
+			<div style="vertical-align:inline; float: left;">
+			<h:outputText value="User Name:" id="uoname" />
+			<h:inputText value="#{loginBean.userName}" id="uname" />
+			<br />
+			<h:outputText value="Password:" />
+			<h:inputSecret value="#{loginBean.password}" id="upass" />
+			<br/>
+			<h:commandButton value="Submit" action="#{loginBean.actionSubmit}" />
+			</div>
+		</rich:panel>
+
+	</body>
+</h:form>
 </html>
