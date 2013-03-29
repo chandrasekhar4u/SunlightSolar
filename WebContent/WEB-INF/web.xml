@@ -37,7 +37,7 @@ id="WebApp_ID" version="3.0">
 <!-- Spring beans configuration -->
 <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/applicationContext.xml</param-value>
+    <param-value>/WEB-INF/context.xml</param-value>
 </context-param>
 
 <!-- filter enforcing charset UTF-8 - must be the first in the chain! -->

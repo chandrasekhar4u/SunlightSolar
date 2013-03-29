@@ -10,26 +10,33 @@
 <h:form id="loginform">
 	<body>
 
-
-		<rich:panel>
-			<f:facet name="header">
-        *Sunlight Solar Business Application*
-        </f:facet>
-			<h:outputText value="Welcome to Sunlight Solar."
-				style="color:blue;font-size:14px;" />
-		</rich:panel>
-		<rich:panel>
-			<div style="vertical-align:inline; float: left;">
-			<h:outputText value="User Name:" id="uoname" />
-			<h:inputText value="#{loginBean.userName}" id="uname" />
-			<br />
-			<h:outputText value="Password:" />
-			<h:inputSecret value="#{loginBean.password}" id="upass" />
-			<br/>
-			<h:commandButton value="Submit" action="#{loginBean.actionSubmit}" />
+		<div style="vertical-align: inline; display: inline-block; width:500px;  margin:0px auto;
+    text-align:left; padding:15px; border:1px dashed #333; background-color:#eee;">
+			<rich:panel>
+				<f:facet name="header">
+        		Sunlight Solar Business Application
+        		</f:facet>
+				<h:outputText value="Welcome to Sunlight Solar."
+					style="color:blue;font-size:14px;" />
+			</rich:panel>
+			<rich:panel>
+			<div>
+				<h:outputText value="User Name:" id="uoname" />
 			</div>
-		</rich:panel>
-
+			<div>
+				<h:inputText value="#{loginBean.userName}" id="uname" />
+			</div>
+				<br />
+			<div>
+				<h:outputText value="Password:" />
+			</div>
+			<div>
+				<h:inputSecret value="#{loginBean.password}" id="upass" />
+			</div>
+				<br />
+				<h:commandButton value="Submit" action="welcome" />
+			</rich:panel>
+		</div>
 	</body>
 </h:form>
 </html>

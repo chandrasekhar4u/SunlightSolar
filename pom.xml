@@ -8,10 +8,10 @@
 	<name>Sunlight Solar</name>
 	<description>Solar Business Maintanence Project</description>
 	<properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	
+
 	<dependencies>
 
 		<dependency>
@@ -26,7 +26,11 @@
 			<version>2.1.1-b04</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
 
 		<!-- Richfaces -->
 		<dependency>
@@ -53,20 +57,13 @@
 			<version>4.2.0.Final</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		
-		<!-- 	distribution of Apache MyFaces Orchestra   -->
-		<!-- <dependency>
-			<groupId>org.apache.myfaces.orchestra</groupId>
-			<artifactId>myfaces-orchestra-core</artifactId>
-			<version>1.5</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.apache.myfaces.orchestra</groupId>
-			<artifactId>myfaces-orchestra-core20</artifactId>
-			<version>1.5</version>
-		</dependency> -->
+
+		<!-- distribution of Apache MyFaces Orchestra -->
+		<!-- <dependency> <groupId>org.apache.myfaces.orchestra</groupId> <artifactId>myfaces-orchestra-core</artifactId> 
+			<version>1.5</version> </dependency> <dependency> <groupId>org.apache.myfaces.orchestra</groupId> 
+			<artifactId>myfaces-orchestra-core20</artifactId> <version>1.5</version> 
+			</dependency> -->
 
 
 
@@ -240,7 +237,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-		
+
+
 
 </project>
