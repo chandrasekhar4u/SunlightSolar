@@ -68,4 +68,18 @@ id="WebApp_ID" version="3.0">
 <listener>
     <listener-class>org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener</listener-class>
 </listener>
+
+	<filter>
+        <filter-name>springRequestContextFilter
+        </filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter
+        </filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springRequestContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
 </web-app>

@@ -6,23 +6,23 @@
 	
 	<!-- custom navigation handler <application> <navigation-handler>com.logica.prodis.ui.support.SimpleNavigationHandler</navigation-handler> 
 		</application> -->
-	<application>
+	<!-- <application>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
-	</application>
+	</application> -->
 
-	<application>
+	<!-- <application>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
-	</application>
-	<!-- <application> <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver> 
-		</application> -->
+	</application>  -->
+	<application> <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver> 
+		</application> 
 	
-	<managed-bean>
+	<!-- <managed-bean>
 		<managed-bean-name>loginBean</managed-bean-name>
 		<managed-bean-class>main.java.controller.LoginBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
-	<navigation-rule>
+ -->	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>welcome</from-outcome>

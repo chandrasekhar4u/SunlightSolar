@@ -17,7 +17,7 @@
 		abstract="true">
 	</bean>
 
-	<bean name="loginBean" class="main.java.controller.LoginBean"
+	<bean name="loginBean" class="main.java.controller.LoginBean" scope="conversation.manual"
 		parent="baseController">
 	</bean>
 
