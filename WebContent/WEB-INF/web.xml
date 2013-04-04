@@ -65,4 +65,7 @@ id="WebApp_ID" version="3.0">
 <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 </listener>
+<listener>
+    <listener-class>org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener</listener-class>
+</listener>
 </web-app>

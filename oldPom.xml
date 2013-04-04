@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>FLARE</id>
+			<name>FLARE-releases</name>
+			<url></url>
+		</repository>
+	
+	</distributionManagement>
+	<properties>
+		<jsf.version>1.2_12</jsf.version>
+		<richfaces.version>3.3.2.SR1</richfaces.version>
+		<facelets.version>1.1.15</facelets.version>
+		<spring.version>3.0.0.RELEASE</spring.version>
+		<spring.version>3.0.0.RELEASE</spring.version>
+		<maven.tomcat.mode>both</maven.tomcat.mode>
+		<maven.tomcat.path>/ssdaily</maven.tomcat.path>
+		<maven.tomcat.update>true</maven.tomcat.update>
+		<maven.tomcat.url>http://localhost:8080/manager</maven.tomcat.url>
+		<tomcat.username>admin</tomcat.username>
+		<tomcat.password>admin</tomcat.password>
+		<version.revison>${buildNumber}</version.revison>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+
+	<organization>
+		<name>Sunlight Solar</name>
+		<url>http://www.sunlightsolar.in</url>
+	</organization>
+	<build>
+		<finalName>SunlightSolar</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<wtpversion>2.0</wtpversion>
+					<additionalProjectFacets>
+						<jst.web>2.5</jst.web>
+						<jst.jsf>1.1</jst.jsf>
+						<jst.java>6.0</jst.java>
+					</additionalProjectFacets>
+
+
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+				<version>2.2</version> <configuration> <formats> <format>html</format> </formats> 
+				</configuration> <executions> <execution> <phase>package</phase> <goals> 
+				<goal>cobertura</goal> </goals> </execution> </executions> </plugin> -->
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<property file="${basedir}/src/main/resources/system.properties" />
+								<ant antfile="build.xml" target="makeWSWar" inheritRefs="true" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- plugin to combined & minify JS & CSS files -->
+			<plugin>
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>maven-minify-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<jsSourceDir>js</jsSourceDir>
+					<cssSourceDir>css</cssSourceDir>
+					<jsSourceFiles>
+						<param>3_3_2.SR1jquery.js</param>
+						<param>jquery-ui-1.7.3.custom.min.js</param>
+						<param>ui.datepicker.js</param>
+						<param>common.js</param>
+						<param>table.js</param>
+						<param>combobox.js</param>
+						<param>logon.js</param>
+					</jsSourceFiles>
+					<cssSourceFiles>
+						<param>core.css</param>
+						<param>icons.css</param>
+						<param>page.css</param>
+						<param>dashboard.css</param>
+						<param>logon.css</param>
+						<param>jquery-ui-1.7.3.custom.css</param>
+					</cssSourceFiles>
+				</configuration>
+			</plugin>
+			<!-- plugin to create minimal Richfaces scripts -->
+			<!-- <plugin> <artifactId>maven-resource-dependency-plugin</artifactId> 
+				<groupId>org.richfaces.cdk</groupId> <version>3.3.2.SR1</version> <configuration> 
+				<xhtmlIncludes> <xhtmlInclude>forms\chartAdHocMeasurement.xhtml</xhtmlInclude> 
+				<xhtmlInclude>forms\manageSchedules.xhtml</xhtmlInclude> <xhtmlInclude>forms\publishFile.xhtml</xhtmlInclude> 
+				<xhtmlInclude>WEB-INF\facelets\components\table\*.xhtml</xhtmlInclude> <xhtmlInclude>WEB-INF\facelets\components\form\*.xhtml</xhtmlInclude> 
+				</xhtmlIncludes> </configuration> <executions> <execution> <phase>process-resources</phase> 
+				<goals> <goal>assembly-resources</goal> </goals> </execution> </executions> 
+				</plugin> -->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+			</plugin>
+
+			<!-- Issue #155 Plugin to find SVN revision number -->
+			<plugin>
+				<!-- http://mojo.codehaus.org/buildnumber-maven-plugin/usage.html -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<providerImplementations>
+						<svn>javasvn</svn>
+					</providerImplementations>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>write-project-properties</goal>
+						</goals>
+						<configuration>
+							<outputFile>
+								${project.build.outputDirectory}/appVersion.properties</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Read system.properties file -->
+			<plugin>
+				<!-- http://haroon.sis.utoronto.ca/zarar/properties-maven-plugin/usage.html -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${basedir}/src/main/resources/system.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin> 
+       			<groupId>org.apache.maven.plugins</groupId> 
+       			<artifactId>maven-dependency-plugin</artifactId> 
+       		</plugin> 
+		</plugins>
+	</build>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>internal</id>
+			<name>internal</name>
+			<url>http://clare.groupinfra.com:8050/artifactory/repo/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+
+
+	<!-- Project dependencies -->
+	<dependencies>
+
+		<!-- Ant dependencies -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-launcher</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<!-- Apache Orchestra -->
+		<dependency>
+			<groupId>org.apache.myfaces.orchestra</groupId>
+			<artifactId>myfaces-orchestra-core</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.myfaces.orchestra</groupId>
+			<artifactId>myfaces-orchestra-core15</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- commons-el is required for Apache Orchestra, but also to use SpringBeanFacesELResolver 
+			(this resolver is recommended for JSF 1.2) -->
+		<dependency>
+			<groupId>commons-el</groupId>
+			<artifactId>commons-el</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.uwyn</groupId>
+			<artifactId>jhighlight</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-api</artifactId>
+			<version>${richfaces.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl</artifactId>
+			<version>${richfaces.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-ui</artifactId>
+			<version>${richfaces.version}</version>
+		</dependency>
+
+		<!-- Delete the JSF dependencies below to deploy on JBoss 4.2.3 -->
+
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<!-- Facelets -->
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>el-impl</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>1.0</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>1.0</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.facelets</groupId>
+			<artifactId>jsf-facelets</artifactId>
+			<version>${facelets.version}</version>
+
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Spring web flow Start <dependency> <groupId>org.springframework.webflow</groupId> 
+			<artifactId>org.springframework.webflow</artifactId> <version>2.0.3.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.webflow</groupId> 
+			<artifactId>org.springframework.js</artifactId> <version>2.0.3.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.webflow</groupId> 
+			<artifactId>org.springframework.faces</artifactId> <version>2.0.3.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.webflow</groupId> 
+			<artifactId>org.springframework.binding</artifactId> <version>2.0.3.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.webflow</groupId> 
+			<artifactId>org.springframework.webflow</artifactId> <version>2.0.3.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-core</artifactId> <version>2.0.5.RELEASE</version> 
+			</dependency> Spring web flow End -->
+
+		<!-- Cache Start -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+
+		<!-- Cache End -->
+		<!-- Jasper Reports Start -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>1.7.5</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.7</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.3</version>
+		</dependency>
+
+		<!--<dependency> <groupId>commons-discovery</groupId> <artifactId>commons-discovery</artifactId> 
+			<version>0.4</version> </dependency> -->
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jcommon</artifactId>
+			<version>1.0.15</version>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>xalan</groupId> <artifactId>xalan</artifactId> 
+			<version>2.6.0</version> </dependency> -->
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.5.0</version>
+
+		</dependency>
+
+
+		<!-- Jasper Reports End -->
+
+		<dependency>
+			<groupId>apache-xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>apache-xerces</groupId>
+			<artifactId>resolver</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>apache-xerces</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<!-- Email Support -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+
+
+		<!-- Oracle libs -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.1.0</version>
+		</dependency>
+
+		<!-- libs -->
+		<!-- Web Services dependencies -->
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>1.5.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core-tiger</artifactId>
+			<version>1.5.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-security</artifactId>
+			<version>1.5.9</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.crypto</groupId>
+					<artifactId>xmldsig</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.ws.commons.schema</groupId>
+			<artifactId>XmlSchema</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-api</artifactId>
+			<version>1.2.11</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-activation_1.1_spec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-javamail_1.4_spec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xerces</groupId>
+					<artifactId>xercesImpl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId>
+			<artifactId>axiom-impl</artifactId>
+			<version>1.2.11</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-activation_1.1_spec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.geronimo.specs</groupId>
+					<artifactId>geronimo-javamail_1.4_spec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.16</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.4.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>internal</id>
+			<name>internal</name>
+			<url></url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>always</updatePolicy>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>snapshot</id>
+			<name>snapshot</name>
+			<url></url>
+		</repository>
+	</repositories>
+</project>
