@@ -3,12 +3,17 @@
  */
 package main.java.controller;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
+import org.apache.myfaces.orchestra.viewController.annotations.ViewController;
 
 /**
  * @author CHANDRA
  * 
  */
+@ViewController(viewIds = { "/screens/welcome.xhtml", "/index.xhtml" })
 public class LoginBean extends BaseController {
 
     private String userName;
@@ -30,6 +35,30 @@ public class LoginBean extends BaseController {
 	this.userName = userName;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see main.java.controller.BaseController#onCreateView()
+     */
+    @Override
+    public void onCreateView() {
+	// TODO Auto-generated method stub
+	super.onCreateView();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * main.java.controller.BaseController#onCreateBean(org.apache.myfaces.orchestra
+     * .conversation.ConversationBindingEvent)
+     */
+    @Override
+    public void onCreateBean(ConversationBindingEvent ar0) {
+	// TODO Auto-generated method stub
+	super.onCreateBean(ar0);
+    }
+
     /**
      * @return the password
      */
@@ -45,48 +74,18 @@ public class LoginBean extends BaseController {
 	this.password = password;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
-     */
-    @Override
-    public void afterPropertiesSet() throws Exception {
-	// TODO Auto-generated method stub
-
-    }
-
     public String actionSubmit() {
+
+	if (userName == null) {
+	    FacesContext.getCurrentInstance().addMessage("Message",
+		    new FacesMessage("Invalid User Name."));
+	}
+	if (password == null) {
+	    FacesContext.getCurrentInstance().addMessage("Message",
+		    new FacesMessage("Invalid Password."));
+
+	}
 	return NavigationConstants.welcomeScreen;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.apache.myfaces.orchestra.conversation.ConversationBindingListener
-     * #valueBound
-     * (org.apache.myfaces.orchestra.conversation.ConversationBindingEvent)
-     */
-    @Override
-    public void valueBound(ConversationBindingEvent arg0) {
-	// TODO Auto-generated method stub
-
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.apache.myfaces.orchestra.conversation.ConversationBindingListener
-     * #valueUnbound
-     * (org.apache.myfaces.orchestra.conversation.ConversationBindingEvent)
-     */
-    @Override
-    public void valueUnbound(ConversationBindingEvent arg0) {
-	// TODO Auto-generated method stub
-
     }
 
 }

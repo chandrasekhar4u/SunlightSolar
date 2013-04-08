@@ -10,6 +10,7 @@
 <h:form id="loginform">
 	<body>
 
+
 		<div style="vertical-align: inline; display: inline-block; width:500px;  margin:0px auto;
     text-align:left; padding:15px; border:1px dashed #333; background-color:#eee;">
 			<rich:panel>
@@ -18,23 +19,26 @@
         		</f:facet>
 				<h:outputText value="Welcome to Sunlight Solar."
 					style="color:blue;font-size:14px;" />
+					
+					<h:messages id="msg" for="loginform" globalOnly="true" infoStyle="color:green" errorStyle="color:red" warnClass="color:orange" />
+					
 			</rich:panel>
 			<rich:panel>
 			<div>
 				<h:outputText value="User Name:" id="uoname" />
 			</div>
 			<div>
-				<h:inputText value="#{loginBean.userName}" id="uname" />
+				<h:inputText value="#{loginBean.userName}" required="true" id="uname" />
 			</div>
 				<br />
 			<div>
 				<h:outputText value="Password:" />
 			</div>
 			<div>
-				<h:inputSecret value="#{loginBean.password}" id="upass" />
+				<h:inputSecret value="#{loginBean.password}" required="true" id="upass" />
 			</div>
 				<br />
-				<h:commandButton value="Submit" action="welcome" />
+				<h:commandButton value="Submit"  action="welcome" />
 			</rich:panel>
 		</div>
 	</body>
