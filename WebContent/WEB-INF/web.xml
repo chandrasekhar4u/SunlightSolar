@@ -30,14 +30,40 @@ id="WebApp_ID" version="3.0">
     <param-value>Production</param-value>
 </context-param>
 <context-param>
+  <param-name>facelets.SKIP_COMMENTS</param-name>
+  <param-value>true</param-value>
+ </context-param>
+ <context-param>
+  <param-name>facelets.VIEW_MAPPINGS</param-name>
+  <param-value>*.xhtml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>facelets.LIBRARIES</param-name>
+  <param-value>/WEB-INF/facelets/taglib.xml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>facelets.REFRESH_PERIOD</param-name>
+  <param-value>1</param-value>
+ </context-param>
+<context-param>
     <param-name>com.sun.faces.enableMissingResourceLibraryDetection</param-name>
     <param-value>true</param-value>
 </context-param>
+
+<error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/index.xhtml</location>
+</error-page>
 
 <!-- Spring beans configuration -->
 <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/context.xml</param-value>
+</context-param>
+
+<context-param>
+    <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name> 
+    <param-value>true</param-value>
 </context-param>
 
 <!-- filter enforcing charset UTF-8 - must be the first in the chain! -->

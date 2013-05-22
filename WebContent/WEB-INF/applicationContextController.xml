@@ -20,6 +20,8 @@
 	<bean name="loginBean" class="main.java.controller.LoginBean" scope="conversation.manual"
 		parent="baseController">
 	</bean>
+	
+	
 
 	<!-- <context:component-scan base-package="PUT_YOUR_BASE_PACKAGE_NAME_HERE" 
 		/> sets up transaction management for service beans <bean id="entityManagerFactory" 

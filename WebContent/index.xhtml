@@ -4,43 +4,44 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:s="www.sunlightsolar.in/solar">
 
 <h:head></h:head>
 <h:form id="loginform">
-	<body>
-
-
-		<div style="vertical-align: inline; display: inline-block; width:500px;  margin:0px auto;
-    text-align:left; padding:15px; border:1px dashed #333; background-color:#eee;">
+		<div
+			style="vertical-align: inline; display: inline-block; width: 500px; margin: 0px auto; text-align: left; padding: 15px; border: 1px dashed #333; background-color: #eee;">
 			<rich:panel>
 				<f:facet name="header">
         		Sunlight Solar Business Application
         		</f:facet>
 				<h:outputText value="Welcome to Sunlight Solar."
 					style="color:blue;font-size:14px;" />
-					
-					<h:messages id="msg" for="loginform" globalOnly="true" infoStyle="color:green" errorStyle="color:red" warnClass="color:orange" />
-					
+				<s:messages/>
+				<h:messages id="msg" for="loginform" globalOnly="true"
+					infoStyle="color:green" errorStyle="color:red"
+					warnClass="color:orange" />
+
 			</rich:panel>
 			<rich:panel>
-			<div>
-				<h:outputText value="User Name:" id="uoname" />
-			</div>
-			<div>
-				<h:inputText value="#{loginBean.userName}" required="true" id="uname" />
-			</div>
+				<div>
+					<h:outputText value="User Name:" id="uoname" />
+				</div>
+				<div>
+					<h:inputText value="#{loginBean.userName}" required="true"	id="uname" />
+				</div>
 				<br />
-			<div>
-				<h:outputText value="Password:" />
-			</div>
-			<div>
-				<h:inputSecret value="#{loginBean.password}" required="true" id="upass" />
-			</div>
+				<div>
+					<h:outputText value="Password:" />
+				</div>
+				<div>
+					<h:inputSecret value="#{loginBean.password}" required="true"  id="upass" />
+				</div>
 				<br />
-				<h:commandButton value="Submit"  action="welcome" />
+				<h:commandButton value="Submit" action="welcome" >
+				<a4j:ajax event="change" reRender="msgs" ajaxSingle="true" limitToList="true"/>
+				</h:commandButton>
 			</rich:panel>
 		</div>
-	</body>
 </h:form>
 </html>
