@@ -108,4 +108,15 @@ id="WebApp_ID" version="3.0">
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+    
+    
+    <!-- <security-constraint>
+    <display-name>Restrict direct access to the /resources folder.</display-name>
+    <web-resource-collection>
+        <web-resource-name>The /resources folder.</web-resource-name>
+        <url-pattern>/screens/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint />
+</security-constraint>  -->
+    
 </web-app>

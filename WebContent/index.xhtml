@@ -38,7 +38,7 @@
 					<h:inputSecret value="#{loginBean.password}" required="true"  id="upass" />
 				</div>
 				<br />
-				<h:commandButton value="Submit" action="welcome" >
+				<h:commandButton value="Submit" action="#{loginBean.actionSubmit}" >
 				<a4j:ajax event="change" reRender="msgs" />
 				</h:commandButton>
 			</rich:panel>
