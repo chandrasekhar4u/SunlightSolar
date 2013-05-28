@@ -8,15 +8,14 @@
 <ui:composition template="/screens/templates/commonTemplate.xhtml">
 
 <ui:define name="content">
-	<h:form id="f">
 		<rich:panel>
-			<f:facet name="header">
-        Sunlight Solar
+		<f:facet name="header">
+        Sunlight Solar <div style="text-align: right; text-shadow: aqua; "> User: <h:outputText style="color:green;"
+				value="#{loginBean.userName}" /></div>
         </f:facet>
 			Welcome <h:outputText style="color:green;"
 				value="#{loginBean.userName}" />
 		</rich:panel>
-	</h:form>
 </ui:define>
 </ui:composition>
 

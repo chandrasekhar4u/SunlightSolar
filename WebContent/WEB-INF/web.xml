@@ -109,6 +109,11 @@ id="WebApp_ID" version="3.0">
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     
+    <!-- Session time out is for 24 hours(86400). -->
+    <session-config>
+    	<session-timeout>3000</session-timeout>
+    </session-config>
+    
     
     <!-- <security-constraint>
     <display-name>Restrict direct access to the /resources folder.</display-name>

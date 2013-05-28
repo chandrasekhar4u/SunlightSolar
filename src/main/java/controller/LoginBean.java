@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
 import org.apache.myfaces.orchestra.viewController.annotations.ViewController;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.web.client.HttpServerErrorException;
 
 /**
  * @author CHANDRA

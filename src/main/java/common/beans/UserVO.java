@@ -3,6 +3,8 @@
  */
 package main.java.common.beans;
 
+import java.sql.Date;
+
 /**
  * The Class UserVO.
  * 
@@ -18,6 +20,46 @@ public class UserVO extends BaseVO {
 
     /** The name. */
     private String name;
+    
+    private Boolean internalInd;
+
+    public Boolean getInternalInd() {
+	return internalInd;
+    }
+
+    public void setInternalInd(Boolean internalInd) {
+	this.internalInd = internalInd;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
+    }
+
+    public Date getStartDate() {
+	return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+	this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+	return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+	this.endDate = endDate;
+    }
+
+    private String password;
+
+    private Date startDate;
+
+    private Date endDate;
 
     /** The address. */
     private String address;
