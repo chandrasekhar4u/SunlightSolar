@@ -36,7 +36,12 @@
     
     <!--Security	
   	<import resource="applicationContext-security.xml" />
-	 -->  
+	 --> 
+	 
+	 <import resource="applicationContextService.xml" /> 
+	 
+	 <import resource="applicationContextDAO.xml" />
+	 
 	<!--Controller Layer-->  	
   	<import resource="applicationContextController.xml" />
   	
@@ -44,16 +49,16 @@
   	<import resource="applicationContextReport.xml" />
   	
   	
-  	<import resource="applicationContextCommon.xml" />
+  	<import resource="applicationContextCommon.xml" /> -->
   	
   
-  	<import resource="applicationContextService.xml" />
+  	
   	
   
-  	<import resource="applicationContextDAO.xml" />
+  	
   	
   
-  	<import resource="applicationContextMock.xml" />
+  	<!--  <import resource="applicationContextMock.xml" />
   	
   	
   	<import resource="applicationContextValidationHandler.xml" />

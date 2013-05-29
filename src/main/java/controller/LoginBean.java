@@ -11,6 +11,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.hibernate.hbm.UserVO;
+
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
 import org.apache.myfaces.orchestra.viewController.annotations.ViewController;
 
@@ -21,23 +23,23 @@ import org.apache.myfaces.orchestra.viewController.annotations.ViewController;
 @ViewController(viewIds = { "/screens/welcome.xhtml", "/index.xhtml" })
 public class LoginBean extends BaseController {
 
-    private String userName;
+    private Integer userId;
 
     private String password;
 
+
     /**
-     * @return the userName
+     * @return the userId
      */
-    public String getUserName() {
-	return userName;
+    public Integer getUserId() {
+        return userId;
     }
 
     /**
-     * @param userName
-     *            the userName to set
+     * @param userId the userId to set
      */
-    public void setUserName(String userName) {
-	this.userName = userName;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     /*
@@ -115,7 +117,34 @@ public class LoginBean extends BaseController {
 
     public String actionSubmit() {
 	FacesContext context=FacesContext.getCurrentInstance();
-	if (userName == null) {
+	
+	if(userId!=null && password !=null){
+	UserVO userVO=getUserService().getUserById(userId);
+	System.out.println("UserVO===============>"+userVO);
+	
+	if(userVO!=null){
+	if(userId!=null){
+	    if(userId.compareTo(userVO.getId())!=0){
+		context.addMessage("Message",
+			    new FacesMessage("Invalid User Name."));
+		return null;
+	    }
+	}
+	if(password!=null){
+	    if(password.compareToIgnoreCase(userVO.getPassword())!=0){
+		context.addMessage("Message",
+			    new FacesMessage("Invalid Password."));
+		 return null;
+	    }
+	}
+	}else{
+	    context.addMessage("Message",
+		    new FacesMessage("Invalid UserName/Password."));
+	 return null;
+	}
+	}
+	
+	if (userId == null) {
 	    context.addMessage("Message",
 		    new FacesMessage("Invalid User Name."));
 	    return null;
@@ -127,21 +156,7 @@ public class LoginBean extends BaseController {
 	    return null;
 
 	}
-	if(userName!=null){
-	    if(userName.compareToIgnoreCase("1234")!=0){
-		context.addMessage("Message",
-			    new FacesMessage("Invalid User Name."));
-		return null;
-	    }
-	}
-	if(password!=null){
-	    if(password.compareToIgnoreCase("1234")!=0){
-		context.addMessage("Message",
-			    new FacesMessage("Invalid Password."));
-		 return null;
-	    }
-	}
-
+	
 	return NavigationConstants.welcomeScreen;
     }
 

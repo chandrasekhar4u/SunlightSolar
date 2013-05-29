@@ -4,6 +4,7 @@
 package main.java.common.beans;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  * @author CHANDRA

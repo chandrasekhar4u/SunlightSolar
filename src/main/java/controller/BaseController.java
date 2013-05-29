@@ -3,6 +3,8 @@
  */
 package main.java.controller;
 
+import main.java.service.IUserService;
+
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
 import org.apache.myfaces.orchestra.conversation.ConversationBindingListener;
 import org.apache.myfaces.orchestra.viewController.annotations.InitView;
@@ -15,6 +17,22 @@ import org.springframework.web.bind.annotation.InitBinder;
  */
 public class BaseController implements InitializingBean,
 	ConversationBindingListener {
+    
+    private IUserService userService;
+
+    /**
+     * @return the userService
+     */
+    public IUserService getUserService() {
+        return userService;
+    }
+
+    /**
+     * @param userService the userService to set
+     */
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
+    }
 
     @InitView
     public void onCreateView() {

@@ -107,6 +107,18 @@
 			<version>3.1.1.RELEASE</version>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- below aspectjweaver and aspectjrt are required for transactions. -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.4</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -130,6 +142,12 @@
 			<artifactId>spring-context</artifactId>
 			<version>3.1.1.RELEASE</version>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -212,7 +230,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-	<!-- MySQL database driver -->
+		<!-- MySQL database driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -222,21 +240,11 @@
 
 		<!-- Logging config, app uses java.util.logging and wrappers for log4j 
 			and commons-logging (jcl) -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.6.6</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-jdk14</artifactId> 
+			<version>1.6.6</version> </dependency> <dependency> <groupId>org.slf4j</groupId> 
+			<artifactId>log4j-over-slf4j</artifactId> <version>1.6.6</version> </dependency> 
+			<dependency> <groupId>org.slf4j</groupId> <artifactId>jcl-over-slf4j</artifactId> 
+			<version>1.6.6</version> </dependency> -->
 		<!-- In-memory DB, for beginning development -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>

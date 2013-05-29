@@ -19,6 +19,7 @@
 
 	<bean name="loginBean" class="main.java.controller.LoginBean" scope="conversation.manual"
 		parent="baseController">
+		<property name="userService" ref="userService" />
 	</bean>
 	
 	
