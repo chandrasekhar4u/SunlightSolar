@@ -9,6 +9,7 @@ package main.java.controller;
  */
 public class NavigationConstants {
 
+    public static final String ADD_USER = "addUser";
     public static String welcomeScreen = "welcome";
 
 }

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import main.hibernate.hbm.UserVO;
 
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
+import org.apache.myfaces.orchestra.conversation.ConversationUtils;
 import org.apache.myfaces.orchestra.viewController.annotations.ViewController;
 
 /**
@@ -26,7 +27,23 @@ public class LoginBean extends BaseController {
     private Integer userId;
 
     private String password;
+    
+    private UserVO userVO;
 
+
+    /**
+     * @return the userVO
+     */
+    public UserVO getUserVO() {
+        return userVO;
+    }
+
+    /**
+     * @param userVO the userVO to set
+     */
+    public void setUserVO(UserVO userVO) {
+        this.userVO = userVO;
+    }
 
     /**
      * @return the userId
@@ -114,6 +131,14 @@ public class LoginBean extends BaseController {
     public void setPassword(String password) {
 	this.password = password;
     }
+    
+    
+    
+    public String addUser(){
+	ConversationUtils.getCurrentBean();
+	setUserVO(new UserVO());
+	return NavigationConstants.ADD_USER;
+    }
 
     public String actionSubmit() {
 	FacesContext context=FacesContext.getCurrentInstance();
@@ -158,6 +183,11 @@ public class LoginBean extends BaseController {
 	}
 	
 	return NavigationConstants.welcomeScreen;
+    }
+    
+    public void submitUser(){
+	this.getUserVO();
+	getUserService().insertUser(getUserVO());
     }
 
 }

@@ -24,4 +24,10 @@
 			<to-view-id>/screens/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+	<navigation-case>
+		<from-outcome>addUser</from-outcome>
+		<to-view-id>/screens/addUser.xhtml</to-view-id>
+	</navigation-case>
+	</navigation-rule>
 </faces-config>

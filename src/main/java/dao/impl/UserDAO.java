@@ -22,6 +22,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 	// TODO Auto-generated method stub
 	
 	sessionFactory.getCurrentSession().save(userVO);
+	System.out.println("UserId is::::::::::::::::>"+userVO.getId());
 	
     }
 

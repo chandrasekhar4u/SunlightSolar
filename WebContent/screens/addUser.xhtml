@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/screens/templates/commonTemplate.xhtml">
+
+<ui:define name="content">
+<h:form id="f1" style="display:inline;">
+	<div style="display: inline-block;">
+			<h:outputLabel id="lname" value="User Name:" /> 
+			<h:inputText id="uname" value="#{loginBean.userVO.name}"/><br/>
+			<h:outputLabel id="lpass" value="Password:"/> 
+			<h:inputText id="upass" value="#{loginBean.userVO.password}"/><br/>
+			<h:outputLabel id="stdate" value="Start Date:"/> 
+			<h:inputText id="sdate" value="#{loginBean.userVO.startDate}"/>
+			<h:commandButton  action="#{loginBean.submitUser}" id="subu" label="Submit User" value="Submit User" >
+			<a4j:ajax render="msgs"/>
+			</h:commandButton>
+	</div>
+</h:form>
+<script type="text/javascript">
+    //For calendar
+    jQuery(".dp").datepicker({
+        inline: true,
+        showWeek: true,
+        firstDay: 1
+    });
+</script>
+</ui:define>
+</ui:composition>
+
+</html>

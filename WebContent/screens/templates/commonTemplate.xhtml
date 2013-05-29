@@ -7,6 +7,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<!-- style sheets -->
+	
+ <!--  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <h:link ></h:link>
+  <h:outputScript target="head" library="js" name="http://code.jquery.com/jquery-1.9.1.js"></h:outputScript>
+  <h:outputScript target="head" library="js" name="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></h:outputScript> -->
+  <!-- <script type="text/javascript"  src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
+	
 </h:head>
 
 <h:body>
@@ -19,13 +26,20 @@
 	</div>
  	
  	<!-- <a4j:log /> -->
- 	<div id="contentW">
+ 	<rich:panel>
+		<f:facet name="header">
+        Sunlight Solar <div style="text-align: right; text-shadow: aqua; "> User: <h:outputText style="color:green;"
+				value="#{loginBean.userId}" /></div>
+        </f:facet>
+ 	<div id="contentW" style="display: inline;" >
 	<h:panelGroup id="formBody" layout="block" style="position:relative">
 	<ui:insert name="content">
 	<ui:include  src="content.xhtml" /> 
 	</ui:insert>
 	</h:panelGroup>
 	</div>
+	</rich:panel>
+	
 	
 	<!-- <div>
 	<ui:insert name="footer">
