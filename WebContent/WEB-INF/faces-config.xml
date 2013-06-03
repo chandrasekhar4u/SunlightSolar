@@ -8,12 +8,15 @@
 		</application> -->
 	<!-- <application> <view-handler>com.sun.facelets.FaceletViewHandler</view-handler> 
 		</application> -->
+		
+		
+		<!-- JSF and Spring are integrated -->
 
 	<!-- <application> <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver 
 		</el-resolver> </application> -->
 	<application>
 		<variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
-	</application>
+	</application> 
 
 	<!-- <managed-bean> <managed-bean-name>loginBean</managed-bean-name> <managed-bean-class>main.java.controller.LoginBean</managed-bean-class> 
 		<managed-bean-scope>request</managed-bean-scope> </managed-bean> -->

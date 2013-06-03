@@ -12,6 +12,17 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
+
+	<repositories>
+	<!-- Prime faces repository. -->
+	<repository>
+		<id>prime-repo</id>
+		<name>PrimeFaces Maven Repository</name>
+		<url>http://repository.primefaces.org</url>
+		<layout>default</layout>
+	</repository>
+	</repositories>
+
 	<dependencies>
 
 		<dependency>
@@ -72,6 +83,22 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Primefaces dependency -->
+		<!-- <dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>3.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>0.7.0</version>
+		</dependency> -->
+
+
+
+
 
 		<!-- distribution of Apache MyFaces Orchestra -->
 		<dependency>
@@ -107,7 +134,7 @@
 			<version>3.1.1.RELEASE</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- below aspectjweaver and aspectjrt are required for transactions. -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
