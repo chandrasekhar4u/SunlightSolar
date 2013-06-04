@@ -6,6 +6,9 @@ package main.java.controller;
 import java.io.IOException;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -28,23 +31,6 @@ public class LoginBean extends BaseController {
 
     private String password;
     
-    private UserVO userVO;
-
-
-    /**
-     * @return the userVO
-     */
-    public UserVO getUserVO() {
-        return userVO;
-    }
-
-    /**
-     * @param userVO the userVO to set
-     */
-    public void setUserVO(UserVO userVO) {
-        this.userVO = userVO;
-    }
-
     /**
      * @return the userId
      */
@@ -136,13 +122,12 @@ public class LoginBean extends BaseController {
     
     public String addUser(){
 	ConversationUtils.getCurrentBean();
-	setUserVO(new UserVO());
 	return NavigationConstants.ADD_USER;
     }
+    
+    
 
     public String actionSubmit() {
-	FacesContext context=FacesContext.getCurrentInstance();
-	
 	if(userId!=null && password !=null){
 	UserVO userVO=getUserService().getUserById(userId);
 	System.out.println("UserVO===============>"+userVO);
@@ -150,34 +135,29 @@ public class LoginBean extends BaseController {
 	if(userVO!=null){
 	if(userId!=null){
 	    if(userId.compareTo(userVO.getId())!=0){
-		context.addMessage("Message",
-			    new FacesMessage("Invalid User Name."));
+		logWarningMessage("Invalid User Name.");
 		return null;
 	    }
 	}
 	if(password!=null){
 	    if(password.compareToIgnoreCase(userVO.getPassword())!=0){
-		context.addMessage("Message",
-			    new FacesMessage("Invalid Password."));
+		logWarningMessage("Invalid Password.");
 		 return null;
 	    }
 	}
 	}else{
-	    context.addMessage("Message",
-		    new FacesMessage("Invalid UserName/Password."));
+	    logWarningMessage("Invalid UserName/Password.");
 	 return null;
 	}
 	}
 	
 	if (userId == null) {
-	    context.addMessage("Message",
-		    new FacesMessage("Invalid User Name."));
+	    logWarningMessage("Invalid User Name.");
 	    return null;
 
 	}
 	if (password == null) {
-	    context.addMessage("Message",
-		    new FacesMessage("Invalid Password."));
+	    logWarningMessage("Invalid Password.");
 	    return null;
 
 	}
@@ -185,9 +165,4 @@ public class LoginBean extends BaseController {
 	return NavigationConstants.welcomeScreen;
     }
     
-    public void submitUser(){
-	this.getUserVO();
-	getUserService().insertUser(getUserVO());
-    }
-
 }

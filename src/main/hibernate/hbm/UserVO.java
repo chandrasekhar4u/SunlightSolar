@@ -11,6 +11,16 @@ import main.java.common.beans.BaseVO;
  */
 public class UserVO extends BaseVO {
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+	return "UserVO [id=" + id + ", name=" + name + ", internalInd="
+		+ internalInd + ", startDate=" + startDate + ", endDate="
+		+ endDate + ", password=" + password + "]";
+    }
+
     /**
      * 
      */

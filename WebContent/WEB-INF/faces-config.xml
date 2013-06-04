@@ -33,4 +33,10 @@
 		<to-view-id>/screens/addUser.xhtml</to-view-id>
 	</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+	<navigation-case>
+		<from-outcome>viewUser</from-outcome>
+		<to-view-id>/screens/viewUser.xhtml</to-view-id>
+	</navigation-case>
+	</navigation-rule>
 </faces-config>
