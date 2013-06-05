@@ -1,8 +1,16 @@
 SunlightSolar
 =============
 
-Application for Maintain Solar Business work.
+Application to Maintain Solar Business work.
+
+Modules
+========
+Configuration (user/application)
+Registration
+Search and update
+Reports
+
 
 Technologies Used
 ==================
-Spring, JSF, RichFaces, Apache Tomcat,
+Spring, Hibernate, JSF, RichFaces, Apache Tomcat,
