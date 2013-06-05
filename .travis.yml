@@ -1,6 +1,8 @@
 language: java
-mvn install -DskipTests=true
-mvn test
 jdk:
-   - openjdk6
-
+  - openjdk7
+  - openjdk6
+  - oraclejdk7
+mvn test
+notifications:
+  email: false
