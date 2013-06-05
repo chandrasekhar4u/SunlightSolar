@@ -63,5 +63,10 @@
 			<value>test</value>
 		</property>
 	</bean>
+	
+	<bean name="baseTest" class="test.java.BaseTest" 
+		parent="baseService">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
     
 </beans>
