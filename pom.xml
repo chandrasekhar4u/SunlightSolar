@@ -14,13 +14,13 @@
 
 
 	<repositories>
-	<!-- Prime faces repository. -->
-	<repository>
-		<id>prime-repo</id>
-		<name>PrimeFaces Maven Repository</name>
-		<url>http://repository.primefaces.org</url>
-		<layout>default</layout>
-	</repository>
+		<!-- Prime faces repository. -->
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -56,6 +56,27 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- standard.jar -->
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 		<!-- Richfaces -->
 		<dependency>
@@ -84,17 +105,9 @@
 		</dependency>
 
 		<!-- Primefaces dependency -->
-		<!-- <dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>3.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.primefaces.extensions</groupId>
-			<artifactId>primefaces-extensions</artifactId>
-			<version>0.7.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.primefaces</groupId> <artifactId>primefaces</artifactId> 
+			<version>3.5</version> </dependency> <dependency> <groupId>org.primefaces.extensions</groupId> 
+			<artifactId>primefaces-extensions</artifactId> <version>0.7.0</version> </dependency> -->
 
 
 

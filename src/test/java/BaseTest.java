@@ -3,6 +3,7 @@
  */
 package test.java;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
@@ -14,8 +15,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-	"classpath:META-INF/conf/spring/applicationContextTest.xml",
-	"classpath:META-INF/conf/spring/context.xml" })
+	"classpath:WEB-INF/applicationContextTest.xml",
+	"classpath:WEB-INF/context.xml" })
 public class BaseTest extends AbstractTransactionalJUnit4SpringContextTests {
+    
+    @Test
+    public void dummyTest(){
+	
+    }
 
 }
