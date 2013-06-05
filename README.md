@@ -5,10 +5,10 @@ Application to Maintain Solar Business work.
 
 Modules
 ========
-Configuration (user/application)
-Registration
-Search and update
-Reports
+Configuration (user/application)<br/>
+Registration<br/>
+Search and update<br/>
+Reports<rb/>
 
 
 Technologies Used
