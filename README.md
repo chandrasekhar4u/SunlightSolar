@@ -15,3 +15,12 @@ Reports<rb/>
 Technologies Used
 ==================
 Spring, Hibernate, JSF, RichFaces, Apache Tomcat,
+
+## Authors
+
+**Chandra Sekhar**
+
++ [http://twitter.com/chandrasekhar4u](http://twitter.com/chandrasekhar4u)
++ [http://github.com/chandrasekhar4u](http://github.com/chandrasekhar4u)
+
+
