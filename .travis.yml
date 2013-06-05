@@ -3,6 +3,5 @@ jdk:
   - openjdk7
   - openjdk6
   - oraclejdk7
-mvn test
 notifications:
   email: false
