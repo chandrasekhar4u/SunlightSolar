@@ -22,6 +22,12 @@
 		<property name="userService" ref="userService" />
 	</bean>
 	
+	<bean name="userBean" class="main.java.controller.UserController" scope="conversation.manual"
+		parent="baseController">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	
 	
 
 	<!-- <context:component-scan base-package="PUT_YOUR_BASE_PACKAGE_NAME_HERE" 

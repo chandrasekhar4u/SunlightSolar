@@ -6,12 +6,26 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition>
+<h:head>
+	<style type="text/css">
+	.link-text {
+		border-left: 12px; 
+		border-right: 12px; 
+		color: red; 
+		font-size: 12px; 
+		padding-left: 10px;
+		padding-right: 10px;
+    	background-color:#f5f36e; 
+	}
+	</style>
+	</h:head>
 	<h:form id="lo">
 		<div align="right" id="logout">
 			<h:commandLink action="#{loginBean.actionLogOut}">LogOut</h:commandLink>
 		</div>
 		<div align="center" id="menu">
-		<h:commandLink action="#{loginBean.addUser}">Add User</h:commandLink>
+		<h:commandLink styleClass="link-text" action="welcome">Home</h:commandLink>&nbsp;&nbsp;
+		<h:commandLink styleClass="link-text"  action="#{loginBean.addUser}">Add User</h:commandLink>
 		</div>
 	</h:form>
 </ui:composition>
