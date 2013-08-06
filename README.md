@@ -15,7 +15,7 @@ Reports<rb/>
 
 Technologies Used
 ==================
-Spring, Hibernate, JSF, RichFaces, Apache Tomcat,
+Spring, Hibernate, JSF, Facelets, RichFaces, Apache Tomcat,
 
 ## Authors
 
