@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 
 import main.java.service.IUserService;
 
+import org.apache.commons.lang.NullArgumentException;
 import org.apache.myfaces.orchestra.conversation.Conversation;
 import org.apache.myfaces.orchestra.conversation.ConversationBindingEvent;
 import org.apache.myfaces.orchestra.conversation.ConversationBindingListener;
@@ -20,6 +21,7 @@ import org.apache.myfaces.orchestra.conversation.ConversationManager;
 import org.apache.myfaces.orchestra.viewController.annotations.InitView;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.jsf.FacesContextUtils;
 
 /**
  * @author CHANDRA
@@ -59,6 +61,10 @@ public class BaseController implements InitializingBean,
 	}
 
     }
+    
+    
+    
+    
     
     public void tidyConversations() {
 
@@ -181,6 +187,30 @@ public class BaseController implements InitializingBean,
         FacesContext facesContext = FacesContext.getCurrentInstance();
 
         return facesContext.getRenderKit().getResponseStateManager().isPostback( facesContext );
+    }
+    
+    /**
+     * returns the backing bean for the given function - the bean will be
+     * created if it doesn't currently exist.
+     * 
+     * @param <T>
+     *            - inferred automatically - do not pass
+     * @param functionId
+     *            - the function id
+     * @return the current or new instance of the backing bean
+     */
+    protected static <T extends BaseController> T getBeanInstance( String beanName ) {
+        if ( beanName == null ) {
+            throw new NullArgumentException( "beanName" );
+        }
+
+        // we know all page backing beans extend base controller so warnings are
+        // suppressed
+        @SuppressWarnings( "unchecked" )
+        T controller = ( T ) FacesContextUtils.getWebApplicationContext(
+            FacesContext.getCurrentInstance() ).getBean( beanName );
+
+        return controller;
     }
 
     /*

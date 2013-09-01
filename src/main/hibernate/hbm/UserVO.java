@@ -11,6 +11,14 @@ import main.java.common.beans.BaseVO;
  */
 public class UserVO extends BaseVO {
 
+    public Boolean getInternalInd() {
+        return internalInd;
+    }
+
+    public void setInternalInd(Boolean internalInd) {
+        this.internalInd = internalInd;
+    }
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
@@ -27,7 +35,7 @@ public class UserVO extends BaseVO {
     private static final long serialVersionUID = -9159609294633126167L;
     private Integer id;
     private String name;
-    private Integer internalInd;
+    private Boolean internalInd;
     private Date startDate;
     private Date endDate;
     private String password;
@@ -40,7 +48,7 @@ public class UserVO extends BaseVO {
 	this.startDate = startDate;
     }
 
-    public UserVO(String name, Integer internalInd, Date startDate,
+    public UserVO(String name, Boolean internalInd, Date startDate,
 	    Date endDate, String password) {
 	this.name = name;
 	this.internalInd = internalInd;
@@ -63,14 +71,6 @@ public class UserVO extends BaseVO {
 
     public void setName(String name) {
 	this.name = name;
-    }
-
-    public Integer getInternalInd() {
-	return this.internalInd;
-    }
-
-    public void setInternalInd(Integer internalInd) {
-	this.internalInd = internalInd;
     }
 
     public Date getStartDate() {

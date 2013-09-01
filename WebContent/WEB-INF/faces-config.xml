@@ -39,4 +39,11 @@
 		<to-view-id>/screens/viewUser.xhtml</to-view-id>
 	</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+	<navigation-case>
+		<from-outcome>showUsers</from-outcome>
+		<to-view-id>/screens/showUsers.xhtml</to-view-id>
+	</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

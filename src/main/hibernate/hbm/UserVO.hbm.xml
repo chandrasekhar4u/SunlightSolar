@@ -11,7 +11,7 @@
         <property name="name" type="string">
             <column name="name" length="45" not-null="true" />
         </property>
-        <property name="internalInd" type="java.lang.Integer">
+        <property name="internalInd" type="org.hibernate.type.NumericBooleanType">
             <column name="internal_ind" />
         </property>
         <property name="startDate" type="timestamp">

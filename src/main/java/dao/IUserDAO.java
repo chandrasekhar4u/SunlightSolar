@@ -3,6 +3,8 @@
  */
 package main.java.dao;
 
+import java.util.List;
+
 import main.hibernate.hbm.UserVO;
 
 /**
@@ -18,5 +20,7 @@ public interface IUserDAO {
     void deleteUser(UserVO userVO);
 
     UserVO getUserById(Integer id);
+
+    List<UserVO> getUsers();
 
 }

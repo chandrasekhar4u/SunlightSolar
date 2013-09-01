@@ -122,6 +122,8 @@ public class LoginBean extends BaseController {
     
     public String addUser(){
 	ConversationUtils.getCurrentBean();
+	UserController userController=UserController.getCurrentInstance();
+	userController.setUserVO(new UserVO());
 	return NavigationConstants.ADD_USER;
     }
     

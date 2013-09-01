@@ -3,6 +3,8 @@
  */
 package main.java.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import main.hibernate.hbm.UserVO;
@@ -44,6 +46,12 @@ public class UserService extends BaseService implements IUserService  {
     @Override
     public UserVO getUserById(Integer id) {
 	return userDAO.getUserById(id);	
+    }
+
+    @Override
+    public List<UserVO> getUsers() {
+	// TODO Auto-generated method stub
+	return userDAO.getUsers();
     }
 
 }

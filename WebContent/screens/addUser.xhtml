@@ -17,7 +17,9 @@
 			<h:outputLabel id="lpass" value="Password:"/> 
 			<h:inputText id="upass" value="#{userBean.userVO.password}"/><br/>
 			<h:outputLabel id="stdate" value="Start Date:"/> 
-			<rich:calendar id="sdate"  value="#{userBean.userVO.startDate}"/>
+			<rich:calendar id="sdate"  value="#{userBean.userVO.startDate}"/><br/>
+			<h:outputLabel id="intUser" value="Internal User:"/> 
+			<h:selectBooleanCheckbox value="#{userBean.userVO.internalInd}" /><br/>
 			<h:commandButton  action="#{userBean.submitUser}" id="subu" label="Submit User" value="Submit User" >
 			<a4j:ajax event="change" render="msgs, uname, upass, sdate"/>
 			</h:commandButton>

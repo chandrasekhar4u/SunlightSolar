@@ -3,11 +3,13 @@
  */
 package main.java.dao.impl;
 
-import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 import main.hibernate.hbm.UserVO;
 import main.java.dao.IUserDAO;
+
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 
 /**
  * @author kakarlac
@@ -50,6 +52,13 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 	// TODO Auto-generated method stub
 	UserVO vo=(UserVO) sessionFactory.getCurrentSession().get(UserVO.class, id);
 	return vo;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<UserVO> getUsers() {
+	// TODO Auto-generated method stub
+	return (List<UserVO>)sessionFactory.getCurrentSession().createQuery("FROM main.hibernate.hbm.UserVO").list();
     }
 
 }

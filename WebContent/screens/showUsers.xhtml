@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/screens/templates/commonTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form id="f2" style="display:inline;">
+			<div style="display: inline-block;">
+					<rich:dataTable id="userList" value="#{userBean.userList}" var="user" rows="5">
+
+						<f:facet name="caption">
+
+							<h:outputText value="User List" />
+
+						</f:facet>
+
+						<f:facet name="header">
+
+							<h:outputText value="System Users" />
+
+						</f:facet>
+
+						<rich:column>
+
+							<f:facet name="header">User Name</f:facet>
+
+							<h:outputText value="#{user.name}" />
+
+
+						</rich:column>
+
+						<rich:column>
+
+							<f:facet name="header">User Id</f:facet>
+
+							<h:outputText value="#{user.id}" />
+
+
+						</rich:column>
+
+						<rich:column>
+
+							<f:facet name="header">User Password</f:facet>
+
+							<h:outputText value="#{user.password}" />
+
+
+						</rich:column>
+						
+						<rich:column>
+
+							<f:facet name="header">Internal User</f:facet>
+							<h:selectBooleanCheckbox value="#{user.internalInd}" disabled="true"/>
+							<h:outputText value="" />
+
+
+						</rich:column>
+
+						<f:facet name="footer">
+
+							<h:outputText value="User List From Database" />
+
+						</f:facet>
+
+					</rich:dataTable>
+					<rich:dataScroller for="userList" maxPages="5"></rich:dataScroller>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>
