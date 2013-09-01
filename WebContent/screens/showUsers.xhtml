@@ -13,57 +13,35 @@
 					<rich:dataTable id="userList" value="#{userBean.userList}" var="user" rows="5">
 
 						<f:facet name="caption">
-
 							<h:outputText value="User List" />
-
 						</f:facet>
-
 						<f:facet name="header">
-
 							<h:outputText value="System Users" />
-
 						</f:facet>
 
 						<rich:column>
-
 							<f:facet name="header">User Name</f:facet>
-
 							<h:outputText value="#{user.name}" />
-
-
 						</rich:column>
 
 						<rich:column>
-
 							<f:facet name="header">User Id</f:facet>
-
 							<h:outputText value="#{user.id}" />
-
-
 						</rich:column>
 
 						<rich:column>
-
 							<f:facet name="header">User Password</f:facet>
-
 							<h:outputText value="#{user.password}" />
-
-
 						</rich:column>
 						
 						<rich:column>
-
 							<f:facet name="header">Internal User</f:facet>
 							<h:selectBooleanCheckbox value="#{user.internalInd}" disabled="true"/>
 							<h:outputText value="" />
-
-
 						</rich:column>
 
 						<f:facet name="footer">
-
 							<h:outputText value="User List From Database" />
-
 						</f:facet>
 
 					</rich:dataTable>
@@ -73,5 +51,4 @@
 
 	</ui:define>
 </ui:composition>
-
 </html>
