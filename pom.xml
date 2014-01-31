@@ -147,32 +147,16 @@
 			<version>3.1.1.RELEASE</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		<!-- Spring Security 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>3.1.1.RELEASE</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>3.1.1.RELEASE</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>3.1.1.RELEASE</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>3.1.1.RELEASE</version>
-			<type>jar</type>
-		</dependency> -->
+
+		<!-- Spring Security <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-core</artifactId> <version>3.1.1.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-web</artifactId> <version>3.1.1.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-config</artifactId> <version>3.1.1.RELEASE</version> 
+			<type>jar</type> </dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-taglibs</artifactId> <version>3.1.1.RELEASE</version> 
+			<type>jar</type> </dependency> -->
 
 		<!-- below aspectjweaver and aspectjrt are required for transactions. -->
 		<dependency>
@@ -339,8 +323,8 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
-					<skipTests>false</skipTests>  
-                    <testFailureIgnore>false</testFailureIgnore>  
+					<skipTests>false</skipTests>
+					<testFailureIgnore>false</testFailureIgnore>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -352,13 +336,18 @@
 				</configuration>
 			</plugin>
 			<plugin>
-        			<groupId>org.apache.maven.plugins</groupId>
-        			<artifactId>maven-surefire-plugin</artifactId>
-        			<version>2.15</version>
-        				<configuration>
-				          	<skipTests>true</skipTests>
-        				</configuration>
-      			</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
 		</plugins>
 	</build>
 
