@@ -48,7 +48,7 @@ public class UserController extends BaseController {
      * This is a helper method which is used to get 
      * a handle on the current instance of a bean. 
      * It’s primary use is for passing data from one bean to another 
-     * @return ExitCapBkingSummaryController
+     * @return UserController
      */
     public static UserController getCurrentInstance() {
         return getBeanInstance( BEAN_NAME );
